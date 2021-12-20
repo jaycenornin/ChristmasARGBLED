@@ -188,7 +188,7 @@ void loop() {
 
   // Poll sensors; polls ever iPollingInterval for performance
   // Logic for touch sensor events
-  if (iTimer % iPollingInterval == 0) {
+  if (iUptime % iPollingInterval == 0) {
     pollSensors();
     // onPress
     if (bLastTouchValue == LOW && bCurrentTouchValue == HIGH) {
@@ -324,7 +324,7 @@ void touchReleaseEvent() {
 
 // Save the current liteMode every 10 minutes if needed
 void autoSave() {
-  if (iTimer % 600000 == 0) { 
+  if (iUptime % 600000 == 0) { 
     if (iLiteMode != diLiteMode.read()) {
       diLiteMode.write(iLiteMode);
     }
